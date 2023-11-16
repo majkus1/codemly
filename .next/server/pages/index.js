@@ -52,6 +52,7 @@ var jsx_runtime = __webpack_require__(893);
 var external_react_ = __webpack_require__(689);
 ;// CONCATENATED MODULE: external "gsap"
 const external_gsap_namespaceObject = require("gsap");
+var external_gsap_default = /*#__PURE__*/__webpack_require__.n(external_gsap_namespaceObject);
 // EXTERNAL MODULE: external "next-i18next"
 var external_next_i18next_ = __webpack_require__(377);
 ;// CONCATENATED MODULE: ./components/nav.tsx
@@ -323,7 +324,17 @@ var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
 
 
 
+
+
 const Home = ()=>{
+    const [isDescriptionVisible, setDescriptionVisible] = (0,external_react_.useState)(false);
+    const [isDescriptionVisible2, setDescriptionVisible2] = (0,external_react_.useState)(false);
+    const [isDescriptionVisible3, setDescriptionVisible3] = (0,external_react_.useState)(false);
+    const [isDescriptionVisible4, setDescriptionVisible4] = (0,external_react_.useState)(false);
+    const descriptionRef = (0,external_react_.useRef)(null);
+    const descriptionRef2 = (0,external_react_.useRef)(null);
+    const descriptionRef3 = (0,external_react_.useRef)(null);
+    const descriptionRef4 = (0,external_react_.useRef)(null);
     const router = (0,router_namespaceObject.useRouter)();
     const { locale } = router;
     const title = locale === "pl" ? "Tytuł po polsku" : "Title in English";
@@ -333,6 +344,24 @@ const Home = ()=>{
             locale
         });
     };
+    const toggleAnimation = (ref, isVisible)=>{
+        external_gsap_default().to(ref.current, {
+            autoAlpha: isVisible ? 1 : 0,
+            height: isVisible ? "auto" : 0,
+            duration: 0.5
+        });
+    };
+    (0,external_react_.useEffect)(()=>{
+        toggleAnimation(descriptionRef, isDescriptionVisible);
+        toggleAnimation(descriptionRef2, isDescriptionVisible2);
+        toggleAnimation(descriptionRef3, isDescriptionVisible3);
+        toggleAnimation(descriptionRef4, isDescriptionVisible4);
+    }, [
+        isDescriptionVisible,
+        isDescriptionVisible2,
+        isDescriptionVisible3,
+        isDescriptionVisible4
+    ]);
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)(jsx_runtime.Fragment, {
         children: [
             /*#__PURE__*/ (0,jsx_runtime.jsxs)((head_default()), {
@@ -388,23 +417,299 @@ const Home = ()=>{
                             }),
                             /*#__PURE__*/ jsx_runtime.jsx("div", {
                                 className: "line"
+                            }),
+                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                className: "btn-lang",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime.jsx("button", {
+                                        onClick: ()=>handleLocaleChange("pl"),
+                                        children: /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                            src: "/img/poland.png"
+                                        })
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime.jsx("button", {
+                                        onClick: ()=>handleLocaleChange("en"),
+                                        children: /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                            src: "/img/united-kingdom.png"
+                                        })
+                                    })
+                                ]
                             })
                         ]
                     }),
-                    /*#__PURE__*/ jsx_runtime.jsx("section", {
-                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                            className: "btn-lang",
-                            children: [
-                                /*#__PURE__*/ jsx_runtime.jsx("button", {
-                                    onClick: ()=>handleLocaleChange("en"),
-                                    children: "English"
-                                }),
-                                /*#__PURE__*/ jsx_runtime.jsx("button", {
-                                    onClick: ()=>handleLocaleChange("pl"),
-                                    children: "Polski"
-                                })
-                            ]
-                        })
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("section", {
+                        id: "about",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                className: "outline-text",
+                                children: "CODEMLY = FRIENDLY"
+                            }),
+                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                className: "title-about",
+                                children: "Połączenie Technologii i Przyjazności"
+                            }),
+                            /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                src: "/img/cbgcno.png"
+                            }),
+                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                className: "element-about",
+                                children: [
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
+                                        className: "txt-about",
+                                        children: [
+                                            "Nazwa naszej firmy uosabia to, co dla nas najważniejsze: pasję do kodowania i tworzenia przyjaznego środowiska dla naszych klient\xf3w i zespołu.",
+                                            " "
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
+                                        className: "txt-about",
+                                        children: [
+                                            "Słowo ",
+                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
+                                                children: "code"
+                                            }),
+                                            " w naszej nazwie odzwierciedla nasze umiejętności techniczne i zamiłowanie do tworzenia oprogramowania. ",
+                                            /*#__PURE__*/ jsx_runtime.jsx("br", {}),
+                                            "Natomiast ",
+                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
+                                                children: "mly"
+                                            }),
+                                            " jest odzwierciedleniem naszej misji, aby każdy aspekt naszej pracy był przyjazny, dostępny i miły w obsłudze."
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
+                                        className: "txt-about",
+                                        children: [
+                                            "Dążymy do tego, aby każdy projekt ",
+                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
+                                                children: "Codemly"
+                                            }),
+                                            " był synonimem technologicznej doskonałości i ciepłego, ludzkiego podejścia."
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
+                                        className: "txt-about",
+                                        children: [
+                                            "Działając na rynkach krajowych i międzynarodowych, dążymy do tego, aby każdy projekt ",
+                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
+                                                children: "Codemly"
+                                            }),
+                                            " ",
+                                            "był synonimem technologicznej doskonałości i ciepłego, ludzkiego podejścia. Kodujemy nie tylko technologię – kodujemy doświadczenia, kt\xf3re zbliżają ludzi i technologię."
+                                        ]
+                                    })
+                                ]
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("section", {
+                        id: "offer",
+                        children: [
+                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("h2", {
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime.jsx("span", {
+                                        children: "< "
+                                    }),
+                                    "Oferta",
+                                    /*#__PURE__*/ jsx_runtime.jsx("span", {
+                                        children: " />"
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                className: "elements-offer",
+                                children: [
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                        className: "element",
+                                        children: [
+                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                className: "logo-title-offer",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/img/web-design.png",
+                                                        className: "logo-offer"
+                                                    }),
+                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                        className: "offer-title-button",
+                                                        children: [
+                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                                className: "head-element",
+                                                                children: "Projekty graficzne"
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime.jsx("button", {
+                                                                onClick: ()=>setDescriptionVisible(!isDescriptionVisible),
+                                                                children: /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                                    src: isDescriptionVisible ? "/img/arrow-up.png" : "/img/down.png",
+                                                                    alt: isDescriptionVisible ? "Ukryj opis" : "Pokaż opis"
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                                ref: descriptionRef,
+                                                style: {
+                                                    opacity: 0,
+                                                    height: 0,
+                                                    visibility: "hidden",
+                                                    overflow: "hidden"
+                                                },
+                                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                    className: "dscrb-offer",
+                                                    children: "Specjalizujemy się w tworzeniu unikalnych projekt\xf3w graficznych dla stron, sklep\xf3w i aplikacji. Twoja wizja, nasze wykonanie – kreujemy design, kt\xf3ry przyciąga i zapada w pamięć."
+                                                })
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                className: "dscrb-offer-desktops",
+                                                children: "Specjalizujemy się w tworzeniu unikalnych projekt\xf3w graficznych dla stron, sklep\xf3w i aplikacji. Twoja wizja, nasze wykonanie – kreujemy design, kt\xf3ry przyciąga i zapada w pamięć."
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                        className: "element",
+                                        children: [
+                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                className: "logo-title-offer",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/img/web-programming.png",
+                                                        className: "logo-offer"
+                                                    }),
+                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                        className: "offer-title-button",
+                                                        children: [
+                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                                className: "head-element",
+                                                                children: "Strony internetowe"
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime.jsx("button", {
+                                                                onClick: ()=>setDescriptionVisible2(!isDescriptionVisible2),
+                                                                children: /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                                    src: isDescriptionVisible2 ? "/img/arrow-up.png" : "/img/down.png",
+                                                                    alt: isDescriptionVisible2 ? "Ukryj opis" : "Pokaż opis"
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                                ref: descriptionRef2,
+                                                style: {
+                                                    opacity: 0,
+                                                    height: 0,
+                                                    visibility: "hidden",
+                                                    overflow: "hidden"
+                                                },
+                                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                    className: "dscrb-offer",
+                                                    children: "Tworzymy responsywne, estetycznie dopracowane strony internetowe, kt\xf3re doskonale prezentują się na każdym urządzeniu. Nasze strony są intuicyjne, szybkie i zoptymalizowane pod SEO, aby Twoja marka skutecznie dotarła do szerokiego grona odbiorc\xf3w."
+                                                })
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                className: "dscrb-offer-desktops",
+                                                children: "Tworzymy responsywne, estetycznie dopracowane strony internetowe, kt\xf3re doskonale prezentują się na każdym urządzeniu. Nasze strony są intuicyjne, szybkie i zoptymalizowane pod SEO, aby Twoja marka skutecznie dotarła do szerokiego grona odbiorc\xf3w."
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                        className: "element",
+                                        children: [
+                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                className: "logo-title-offer",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/img/online-shop.png",
+                                                        className: "logo-offer"
+                                                    }),
+                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                        className: "offer-title-button",
+                                                        children: [
+                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                                className: "head-element",
+                                                                children: "Sklepy internetowe"
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime.jsx("button", {
+                                                                onClick: ()=>setDescriptionVisible3(!isDescriptionVisible3),
+                                                                children: /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                                    src: isDescriptionVisible3 ? "/img/arrow-up.png" : "/img/down.png",
+                                                                    alt: isDescriptionVisible3 ? "Ukryj opis" : "Pokaż opis"
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                                ref: descriptionRef3,
+                                                style: {
+                                                    opacity: 0,
+                                                    height: 0,
+                                                    visibility: "hidden",
+                                                    overflow: "hidden"
+                                                },
+                                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                    className: "dscrb-offer",
+                                                    children: "Specjalizujemy się w projektowaniu sklep\xf3w internetowych, kt\xf3re nie tylko świetnie wyglądają, ale są też łatwe w obsłudze i bezpieczne. Nasze rozwiązania e-commerce są skrojone na miarę, aby maksymalizować sprzedaż i zwiększać zadowolenie klient\xf3w."
+                                                })
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                className: "dscrb-offer-desktops",
+                                                children: "Specjalizujemy się w projektowaniu sklep\xf3w internetowych, kt\xf3re nie tylko świetnie wyglądają, ale są też łatwe w obsłudze i bezpieczne. Nasze rozwiązania e-commerce są skrojone na miarę, aby maksymalizować sprzedaż i zwiększać zadowolenie klient\xf3w."
+                                            })
+                                        ]
+                                    }),
+                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                        className: "element",
+                                        children: [
+                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                className: "logo-title-offer",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/img/mobile-development.png",
+                                                        className: "logo-offer"
+                                                    }),
+                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                                                        className: "offer-title-button",
+                                                        children: [
+                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                                className: "head-element",
+                                                                children: "Aplikacje"
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime.jsx("button", {
+                                                                onClick: ()=>setDescriptionVisible4(!isDescriptionVisible4),
+                                                                children: /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                                    src: isDescriptionVisible4 ? "/img/arrow-up.png" : "/img/down.png",
+                                                                    alt: isDescriptionVisible4 ? "Ukryj opis" : "Pokaż opis"
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                ]
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                                ref: descriptionRef4,
+                                                style: {
+                                                    opacity: 0,
+                                                    height: 0,
+                                                    visibility: "hidden",
+                                                    overflow: "hidden"
+                                                },
+                                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                    className: "dscrb-offer",
+                                                    children: "Projektujemy i rozwijamy aplikacje mobilne i webowe, kt\xf3re wyr\xf3żniają się na tle konkurencji. Oferujemy innowacyjne, skalowalne i funkcjonalne rozwiązania, dostosowane do potrzeb Twojego biznesu i oczekiwań użytkownik\xf3w."
+                                                })
+                                            }),
+                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                                className: "dscrb-offer-desktops",
+                                                children: "Projektujemy i rozwijamy aplikacje mobilne i webowe, kt\xf3re wyr\xf3żniają się na tle konkurencji. Oferujemy innowacyjne, skalowalne i funkcjonalne rozwiązania, dostosowane do potrzeb Twojego biznesu i oczekiwań użytkownik\xf3w."
+                                            })
+                                        ]
+                                    })
+                                ]
+                            })
+                        ]
                     })
                 ]
             })

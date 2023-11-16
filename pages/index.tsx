@@ -1,10 +1,20 @@
+import React, { useState, useEffect, useRef, MutableRefObject } from 'react'
 import Nav from '@/components/nav'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import gsap from 'gsap'
 
 const Home = () => {
+	const [isDescriptionVisible, setDescriptionVisible] = useState(false)
+	const [isDescriptionVisible2, setDescriptionVisible2] = useState(false)
+	const [isDescriptionVisible3, setDescriptionVisible3] = useState(false)
+	const [isDescriptionVisible4, setDescriptionVisible4] = useState(false)
+	const descriptionRef = useRef(null)
+	const descriptionRef2 = useRef(null)
+	const descriptionRef3 = useRef(null)
+	const descriptionRef4 = useRef(null)
 	const router = useRouter()
 	const { locale } = router
 
@@ -14,6 +24,18 @@ const Home = () => {
 	const handleLocaleChange = (locale: string) => {
 		router.push(router.pathname, router.asPath, { locale })
 	}
+
+	const toggleAnimation = (ref: MutableRefObject<null>, isVisible: boolean) => {
+		gsap.to(ref.current, { autoAlpha: isVisible ? 1 : 0, height: isVisible ? 'auto' : 0, duration: 0.5 })
+	}
+
+	useEffect(() => {
+		toggleAnimation(descriptionRef, isDescriptionVisible)
+		toggleAnimation(descriptionRef2, isDescriptionVisible2)
+		toggleAnimation(descriptionRef3, isDescriptionVisible3)
+		toggleAnimation(descriptionRef4, isDescriptionVisible4)
+	}, [isDescriptionVisible, isDescriptionVisible2, isDescriptionVisible3, isDescriptionVisible4])
+
 	return (
 		<>
 			<Head>
@@ -33,11 +55,179 @@ const Home = () => {
 						<img src='/img/cbgcno.png' className='white-ms-logo' />
 					</div>
 					<div className='line'></div>
-				</header>
-				<section>
 					<div className='btn-lang'>
-						<button onClick={() => handleLocaleChange('en')}>English</button>
-						<button onClick={() => handleLocaleChange('pl')}>Polski</button>
+						<button onClick={() => handleLocaleChange('pl')}>
+							<img src='/img/poland.png' />
+						</button>
+						<button onClick={() => handleLocaleChange('en')}>
+							<img src='/img/united-kingdom.png' />
+						</button>
+					</div>
+				</header>
+				<section id='about'>
+					{/* <h2>
+						<span>{'< '}</span>O Nas<span>{' />'}</span>
+					</h2> */}
+					<p className='outline-text'>CODEMLY = FRIENDLY</p>
+					<p className='title-about'>Połączenie Technologii i Przyjazności</p>
+					<img src='/img/cbgcno.png' />
+					<div className='element-about'>
+						<p className='txt-about'>
+							Nazwa naszej firmy uosabia to, co dla nas najważniejsze: pasję do kodowania i tworzenia przyjaznego
+							środowiska dla naszych klientów i zespołu.{' '}
+						</p>
+						<p className='txt-about'>
+							Słowo <span>code</span> w naszej nazwie odzwierciedla nasze umiejętności techniczne i zamiłowanie do
+							tworzenia oprogramowania. <br></br>Natomiast <span>mly</span> jest odzwierciedleniem naszej misji, aby
+							każdy aspekt naszej pracy był przyjazny, dostępny i miły w obsłudze.
+						</p>
+						<p className='txt-about'>
+							Dążymy do tego, aby każdy projekt <span>Codemly</span> był synonimem technologicznej doskonałości i
+							ciepłego, ludzkiego podejścia.
+						</p>
+						<p className='txt-about'>
+							Działając na rynkach krajowych i międzynarodowych, dążymy do tego, aby każdy projekt <span>Codemly</span>{' '}
+							był synonimem technologicznej doskonałości i ciepłego, ludzkiego podejścia. Kodujemy nie tylko technologię
+							– kodujemy doświadczenia, które zbliżają ludzi i technologię.
+						</p>
+					</div>
+				</section>
+
+				<section id='offer'>
+					<h2>
+						<span>{'< '}</span>Oferta<span>{' />'}</span>
+					</h2>
+					<div className='elements-offer'>
+						<div className='element'>
+							<div className='logo-title-offer'>
+								<img src='/img/web-design.png' className='logo-offer' />
+								<div className='offer-title-button'>
+									<p className='head-element'>Projekty graficzne</p>
+									<button onClick={() => setDescriptionVisible(!isDescriptionVisible)}>
+										<img
+											src={isDescriptionVisible ? '/img/arrow-up.png' : '/img/down.png'}
+											alt={isDescriptionVisible ? 'Ukryj opis' : 'Pokaż opis'}
+										/>
+									</button>
+								</div>
+							</div>
+							<div
+								ref={descriptionRef}
+								style={{
+									opacity: 0,
+									height: 0,
+									visibility: 'hidden',
+									overflow: 'hidden',
+								}}>
+								<p className='dscrb-offer'>
+									Specjalizujemy się w tworzeniu unikalnych projektów graficznych dla stron, sklepów i aplikacji. Twoja
+									wizja, nasze wykonanie – kreujemy design, który przyciąga i zapada w pamięć.
+								</p>
+							</div>
+							<p className='dscrb-offer-desktops'>
+								Specjalizujemy się w tworzeniu unikalnych projektów graficznych dla stron, sklepów i aplikacji. Twoja
+								wizja, nasze wykonanie – kreujemy design, który przyciąga i zapada w pamięć.
+							</p>
+						</div>
+						<div className='element'>
+							<div className='logo-title-offer'>
+								<img src='/img/web-programming.png' className='logo-offer' />
+								<div className='offer-title-button'>
+									<p className='head-element'>Strony internetowe</p>
+									<button onClick={() => setDescriptionVisible2(!isDescriptionVisible2)}>
+										<img
+											src={isDescriptionVisible2 ? '/img/arrow-up.png' : '/img/down.png'}
+											alt={isDescriptionVisible2 ? 'Ukryj opis' : 'Pokaż opis'}
+										/>
+									</button>
+								</div>
+							</div>
+							<div
+								ref={descriptionRef2}
+								style={{
+									opacity: 0,
+									height: 0,
+									visibility: 'hidden',
+									overflow: 'hidden',
+								}}>
+								<p className='dscrb-offer'>
+									Tworzymy responsywne, estetycznie dopracowane strony internetowe, które doskonale prezentują się na
+									każdym urządzeniu. Nasze strony są intuicyjne, szybkie i zoptymalizowane pod SEO, aby Twoja marka
+									skutecznie dotarła do szerokiego grona odbiorców.
+								</p>
+							</div>
+							<p className='dscrb-offer-desktops'>
+								Tworzymy responsywne, estetycznie dopracowane strony internetowe, które doskonale prezentują się na
+								każdym urządzeniu. Nasze strony są intuicyjne, szybkie i zoptymalizowane pod SEO, aby Twoja marka
+								skutecznie dotarła do szerokiego grona odbiorców.
+							</p>
+						</div>
+						<div className='element'>
+							<div className='logo-title-offer'>
+								<img src='/img/online-shop.png' className='logo-offer' />
+								<div className='offer-title-button'>
+									<p className='head-element'>Sklepy internetowe</p>
+									<button onClick={() => setDescriptionVisible3(!isDescriptionVisible3)}>
+										<img
+											src={isDescriptionVisible3 ? '/img/arrow-up.png' : '/img/down.png'}
+											alt={isDescriptionVisible3 ? 'Ukryj opis' : 'Pokaż opis'}
+										/>
+									</button>
+								</div>
+							</div>
+							<div
+								ref={descriptionRef3}
+								style={{
+									opacity: 0,
+									height: 0,
+									visibility: 'hidden',
+									overflow: 'hidden',
+								}}>
+								<p className='dscrb-offer'>
+									Specjalizujemy się w projektowaniu sklepów internetowych, które nie tylko świetnie wyglądają, ale są
+									też łatwe w obsłudze i bezpieczne. Nasze rozwiązania e-commerce są skrojone na miarę, aby
+									maksymalizować sprzedaż i zwiększać zadowolenie klientów.
+								</p>
+							</div>
+							<p className='dscrb-offer-desktops'>
+								Specjalizujemy się w projektowaniu sklepów internetowych, które nie tylko świetnie wyglądają, ale są też
+								łatwe w obsłudze i bezpieczne. Nasze rozwiązania e-commerce są skrojone na miarę, aby maksymalizować
+								sprzedaż i zwiększać zadowolenie klientów.
+							</p>
+						</div>
+						<div className='element'>
+							<div className='logo-title-offer'>
+								<img src='/img/mobile-development.png' className='logo-offer' />
+								<div className='offer-title-button'>
+									<p className='head-element'>Aplikacje</p>
+									<button onClick={() => setDescriptionVisible4(!isDescriptionVisible4)}>
+										<img
+											src={isDescriptionVisible4 ? '/img/arrow-up.png' : '/img/down.png'}
+											alt={isDescriptionVisible4 ? 'Ukryj opis' : 'Pokaż opis'}
+										/>
+									</button>
+								</div>
+							</div>
+							<div
+								ref={descriptionRef4}
+								style={{
+									opacity: 0,
+									height: 0,
+									visibility: 'hidden',
+									overflow: 'hidden',
+								}}>
+								<p className='dscrb-offer'>
+									Projektujemy i rozwijamy aplikacje mobilne i webowe, które wyróżniają się na tle konkurencji.
+									Oferujemy innowacyjne, skalowalne i funkcjonalne rozwiązania, dostosowane do potrzeb Twojego biznesu i
+									oczekiwań użytkowników.
+								</p>
+							</div>
+							<p className='dscrb-offer-desktops'>
+								Projektujemy i rozwijamy aplikacje mobilne i webowe, które wyróżniają się na tle konkurencji. Oferujemy
+								innowacyjne, skalowalne i funkcjonalne rozwiązania, dostosowane do potrzeb Twojego biznesu i oczekiwań
+								użytkowników.
+							</p>
+						</div>
 					</div>
 				</section>
 			</div>
