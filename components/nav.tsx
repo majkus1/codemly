@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
 				</div>
 				<div className='links' ref={linksRef}>
 					{/* ... links ... */}
-					<a href='#news'>{'< OFERTA />'}</a>
+					<a href='#news'>{t('welcome')}</a>
 					<a href='#news'>{'< REALIZACJE />'}</a>
 					<a href='#news'>{'< KONTAKT />'}</a>
 				</div>

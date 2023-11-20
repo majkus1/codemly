@@ -199,7 +199,7 @@ const Home = () => {
 							<div className='logo-title-offer'>
 								<img src='/img/mobile-development.png' className='logo-offer' />
 								<div className='offer-title-button'>
-									<p className='head-element'>Aplikacje</p>
+									<p className='head-element'>Aplikacje </p>
 									<button onClick={() => setDescriptionVisible4(!isDescriptionVisible4)}>
 										<img
 											src={isDescriptionVisible4 ? '/img/arrow-up.png' : '/img/down.png'}
