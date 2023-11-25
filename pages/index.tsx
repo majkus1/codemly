@@ -5,6 +5,16 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import gsap from 'gsap'
+import Carousel from '@/components/Carousel'
+
+const imgs = ['/img/01.jpg', '/img/02.jpg', '/img/03.jpg']
+// import Carousel from '@/components/carousel'
+
+// import image1 from "../public/img/01.jpg";
+// import image2 from "../public/img/02.jpg";
+// import image3 from "../public/img/03.jpg";
+
+// const imgs = [image1, image2, image3];
 
 const Home = () => {
 	const [isDescriptionVisible, setDescriptionVisible] = useState(false)
@@ -230,6 +240,101 @@ const Home = () => {
 						</div>
 					</div>
 				</section>
+
+				<section id='workwith'>
+					<h3>Pracujemy w...</h3>
+					<div className='techs'>
+						<div className='part1'>
+							<img src='/img/vsc.webp' />
+							<img src='/img/html.webp' />
+							<img src='/img/css.webp' />
+							<img src='/img/JavaScript-logo.webp' />
+						</div>
+						<div className='part1'>
+							<img src='/img/nodejss.webp' />
+							<img src='/img/mongodb.webp' />
+							<img src='/img/react.webp' />
+							<img src='/img/nextjs.webp' />
+						</div>
+						<div className='part1'>
+							<img src='/img/gatsby.webp' />
+							<img src='/img/vue.webp' />
+							<img src='/img/ts.webp' />
+							<img src='/img/php.webp' />
+						</div>
+						<div className='part1'>
+							<img src='/img/figma.webp' />
+							<img src='/img/sql.webp' />
+							<img src='/img/shoper.webp' />
+						</div>
+						<div className='part1'>
+							<img src='/img/ps.webp' className='ps' />
+							<img src='/img/wp.webp' />
+						</div>
+					</div>
+
+					<div className='techdesktop'>
+						<div className='part1'>
+							<img src='/img/vsc.webp' />
+							<img src='/img/html.webp' />
+							<img src='/img/css.webp' />
+							<img src='/img/JavaScript-logo.webp' />
+							<img src='/img/nodejss.webp' />
+							<img src='/img/mongodb.webp' />
+							<img src='/img/react.webp' />
+							<img src='/img/nextjs.webp' />
+						</div>
+						{/* <div className='part1'>
+							<img src='/img/nodejss.webp' />
+							<img src='/img/mongodb.webp' />
+							<img src='/img/react.webp' />
+							<img src='/img/nextjs.webp' />
+						</div> */}
+						<div className='part1'>
+							<img src='/img/gatsby.webp' />
+							<img src='/img/vue.webp' />
+							<img src='/img/ts.webp' />
+							<img src='/img/php.webp' />
+							<img src='/img/figma.webp' />
+							<img src='/img/sql.webp' />
+							<img src='/img/shoper.webp' />
+							<img src='/img/ps.webp' className='ps' />
+							<img src='/img/wp.webp' />
+						</div>
+						{/* <div className='part1'>
+							<img src='/img/figma.webp' />
+							<img src='/img/sql.webp' />
+							<img src='/img/shoper.webp' />
+						</div> */}
+						{/* <div className='part1'>
+							<img src='/img/ps.webp' className='ps' />
+							<img src='/img/wp.webp' />
+						</div> */}
+					</div>
+				</section>
+
+				<section id='listenandact'>
+					<div className='centercontent'>
+						<h2 className='headlaa'>Słuchamy i Działamy...</h2>
+						<p className='txtlaa'>
+							W Codemly wierzymy, że skuteczna komunikacja jest kluczem do sukcesu każdego projektu. Gdy potrzebujesz
+							wyjątkowego projektu graficznego dla swojej aplikacji, nasz zespół przeprowadza z Tobą szczegółowy wywiad.
+							Dzięki temu głęboko rozumiemy Twoje potrzeby i oczekiwania. <br></br>
+							<br></br>Następnie, angażujemy się w rozmowy o funkcjonalnościach Twojej strony internetowej, sklepu czy
+							aplikacji, aby zapewnić Ci rozwiązania, które są nie tylko technologicznie zaawansowane, ale również
+							intuicyjne, przyjazne użytkownikowi, i co najważniejsze, wydajne i zoptymalizowane
+						</p>
+						<h2 className='headlaa'>Dbamy o nasze projekty...</h2>
+						<Carousel slides={imgs} />
+					</div>
+				</section>
+
+				<section id='realization'>
+					<h2>
+						<span>{'< '}</span>Realizacje<span>{' />'}</span>
+					</h2>
+				</section>
+				{/* <Carousel slides={imgs} />; */}
 			</div>
 		</>
 	)
